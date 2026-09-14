@@ -1,1 +1,57 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --main-font: 'Inter';
+  --accent-font: 'PressStart2P';
+  --card-text-weight: 410;
+  --card-heading-weight: 715;
+  --page-background:
+    repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(
+      to bottom,
+      #e7e7e7 0.01%,
+      #1a1a1a
+    );
+  --content-width: clamp(320px, 100vw - 40px, 700px);
+  --header-offset: clamp(40px, 6.944vw, 100px);
+  --header-padding-block: clamp(64px, 8.889vw, 128px);
+  --header-padding-inline: clamp(16px, 2vw, 24px);
+  --header-gap: clamp(12px, 1.389vw, 20px);
+  --logo-size: clamp(40px, 4.514vw, 65px);
+  --header-title-size: clamp(14px, 1.597vw, 23px);
+  --bg-color: #ffffff;
+  --border-color: #000000;
+  --accent-color: #000000;
+  --text-color: #ffffff;
+  --contour-color: #000000;
+  --animation-fill-color: #ff0000;
+  --cards-offset: clamp(50px, 6.806vw, 98px);
+  --cards-gap: 50px;
+  --card-padding: 25px;
+  --card-title-size: 18px;
+  --card-text-size: 18px;
+  --card-text-line-height: 21px;
+  --button-text-size: 14px;
+  --stroke-color: #ffffff;
+}
+
+@media (width <= 375px) {
+  :root {
+    --content-width: 100%;
+    --header-offset: 100px;
+    --header-padding-block: 24px;
+    --header-padding-inline: 12px;
+    --header-gap: 20px;
+    --logo-size: 49px;
+    --header-title-size: 14px;
+    --cards-offset: 100px;
+    --cards-gap: 50px;
+  }
+}
