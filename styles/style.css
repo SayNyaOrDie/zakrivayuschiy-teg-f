@@ -36,7 +36,7 @@
   padding-inline: var(--header-padding-inline);
   border: 2px solid var(--border-color, #000000);
   background-color: var(--bg-color, #ffffff);
-  font-family: var(--accent-font, 'PressStart2P');
+  font-family: var(--accent-font, 'PressStart2P'), fantasy;
   font-weight: 400;
   font-synthesis: none;
   font-variation-settings: normal;
@@ -118,7 +118,7 @@
   position: absolute;
   inset-block-start: 25px;
   inset-inline-end: 25px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, 'PressStart2P'), fantasy;
   font-size: var(--button-text-size);
   line-height: 1;
   text-transform: uppercase;
@@ -132,16 +132,9 @@
   mix-blend-mode: hard-light;
 }
 
-@supports (-webkit-text-stroke: 1px #000) {
+@supports (-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000) {
   .card__watermark {
     -webkit-text-stroke: 1px var(--stroke-color, #ffffff);
-    paint-order: stroke fill;
-    text-shadow: none;
-  }
-}
-
-@supports (text-stroke: 1px #000) {
-  .card__watermark {
     text-stroke: 1px var(--stroke-color, #ffffff);
     paint-order: stroke fill;
     text-shadow: none;
@@ -181,10 +174,12 @@
   inline-size: 38px;
   block-size: 38px;
   flex-shrink: 0;
+  overflow: visible;
   border: 2px solid transparent;
   background-color: transparent;
   cursor: pointer;
   transition: border-color 0.3s ease;
+  translate: 5px 0;
 }
 
 .card__icon-button:focus {
@@ -197,16 +192,16 @@
 
 .like-icon {
   display: block;
+  margin: auto;
   flex-shrink: 0;
   inline-size: 39px;
   block-size: 36px;
-  transform: translateX(5px);
+  min-inline-size: 39px;
+  min-block-size: 36px;
   transform-origin: center;
 }
 
-.card__like-button,
-.save-button,
-.modal__close {
+.button {
   position: relative;
   isolation: isolate;
   display: flex;
@@ -215,16 +210,14 @@
   padding: 9px 17px;
   border: 2px solid var(--border-color, #000000);
   background-color: var(--bg-color, #ffffff);
-  font-family: var(--accent-font, 'PressStart2P');
+  font-family: var(--accent-font, 'PressStart2P'), fantasy;
   font-size: var(--button-text-size, 14px);
   line-height: 0.9;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
 }
 
-.card__like-button::after,
-.save-button::after,
-.modal__close::after {
+.button::after {
   content: "";
   position: absolute;
   inset: -2px;
@@ -234,18 +227,12 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.card__like-button:hover::after,
-.save-button:hover::after,
-.modal__close:hover::after {
+.button:hover::after {
   transform: scaleX(1);
 }
 
-.card__like-button:focus,
-.card__like-button:focus-visible,
-.save-button:focus,
-.save-button:focus-visible,
-.modal__close:focus,
-.modal__close:focus-visible {
+.button:focus,
+.button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 var(--accent-color, #000000);
 }
@@ -290,7 +277,7 @@
   gap: 30px 20px;
   inset: 0;
   margin: auto;
-  padding: 30px;
+  padding: 28px;
   inline-size: 353px;
   max-inline-size: calc(100% - 20px);
   border: 2px solid var(--border-color, #000000);
@@ -307,7 +294,7 @@
 
 .modal__text {
   margin: 0;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, 'PressStart2P'), fantasy;
   font-size: var(--button-text-size);
   line-height: 1.5;
   text-transform: uppercase;
@@ -324,10 +311,6 @@
 }
 
 @media (width <= 375px) {
-  .header {
-    min-block-size: 327px;
-  }
-
   .card__title {
     padding-block-start: 4px;
     line-height: 1.2;
@@ -349,9 +332,7 @@
 
   .modal[open] {
     inline-size: 345px;
-    min-block-size: 191px;
     max-inline-size: calc(100% - 20px);
     padding: 30px 38px;
-    gap: 30px;
   }
 }

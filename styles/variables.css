@@ -19,7 +19,7 @@
       #e7e7e7 0.01%,
       #1a1a1a
     );
-  --content-width: clamp(320px, 100vw - 40px, 700px);
+  --content-width: clamp(375px, 100vw - 40px, 700px);
   --header-offset: clamp(40px, 6.944vw, 100px);
   --header-padding-block: clamp(64px, 8.889vw, 128px);
   --header-padding-inline: clamp(16px, 2vw, 24px);
@@ -46,7 +46,7 @@
   :root {
     --content-width: 100%;
     --header-offset: 100px;
-    --header-padding-block: 24px;
+    --header-padding-block: 120px;
     --header-padding-inline: 12px;
     --header-gap: 20px;
     --logo-size: 49px;
